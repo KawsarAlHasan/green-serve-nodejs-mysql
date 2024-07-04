@@ -74,7 +74,8 @@ const adminUpdate = async (req, res) => {
       });
     }
 
-    const profilePic = req.file.path;
+    // const profilePic = req.file.path;
+    const profilePic = req.file.path.replace("public/", "");
 
     const data = await db.query(
       `UPDATE green_admin SET name=?, profilePic=? WHERE id =? `,

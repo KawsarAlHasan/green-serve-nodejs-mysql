@@ -5,7 +5,8 @@ const storage = multer.diskStorage({
   destination: "public/images",
   filename: function (req, file, cb) {
     const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
-    cb(null, uniqueSuffix + "_" + file.originalname);
+    const originalName = file.originalname.replace(/\s+/g, "-").toLowerCase(); // Replace spaces with hyphens and convert to lowercase
+    cb(null, uniqueSuffix + "_" + originalName);
   },
 });
 
